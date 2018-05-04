@@ -14,4 +14,7 @@ const google = require('./google/places.js');
 //   .alias('help', 'h')
 //   .argv;
 
-google.placesNearHere();
+google.placesNearHere({
+  address: '44054',
+  radiusInMeters: 5000
+});

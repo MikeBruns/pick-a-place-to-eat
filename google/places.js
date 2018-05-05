@@ -52,15 +52,15 @@ var getNextPage = nextPageToken => {
 };
 
 
-var googleMapsClient = require('@google/maps').createClient({
-  key: config.googleApiKey
-});
-googleMapsClient.geocode({
-  address: '44054'
-}, function(err, response) {
-  if (!err) {
-    console.log(response.json.results);
-  }
-});
+// var googleMapsClient = require('@google/maps').createClient({
+//   key: config.googleApiKey
+// });
+// googleMapsClient.geocode({
+//   address: '44054'
+// }, function(err, response) {
+//   if (!err) {
+//     console.log(response.json.results);
+//   }
+// });
 
 module.exports.placesNearHere = placesNearHere;

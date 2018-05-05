@@ -6,6 +6,7 @@ const config = require('../config.json');
 var lat = 41.8781;
 var lng = -87.62989;
 var radiusInMeters = 50000;
+// var radiusInMeters = 24140.16;
 const googleMapsLocationUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
 var placesNames = [];
 
@@ -31,10 +32,7 @@ var getPlacesNearMeNames = body => {
 };
 
 var getNextPage = nextPageToken => {
-  console.log(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=${nextPageToken}&key=${config.googleApiKey}`);
   setTimeout(() => {
-    console.log('inside of callback');
-
     request({
       url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${config.googleApiKey}&pagetoken=${nextPageToken}`,
       json: true
@@ -45,11 +43,12 @@ var getNextPage = nextPageToken => {
       if (body.next_page_token) {
         getNextPage(body.next_page_token)
       } else {
+        console.log('Final places list:');
         console.log(placesNames);
+        console.log(placesNames.length);
       }
-
     });
-  }, 2000);
+  }, 2000); //have to use a timeout to allow the next page work, it only works after it has been processed
 };
 
 module.exports.placesNearHere = placesNearHere;

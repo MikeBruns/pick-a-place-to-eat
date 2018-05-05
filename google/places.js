@@ -39,16 +39,15 @@ var getNextPage = nextPageToken => {
       url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${config.googleApiKey}&pagetoken=${nextPageToken}`,
       json: true
     }, (error, response, body) => {
-      console.log(body.results.length);
-      console.log(body.results[1].name);
       for (var i = 0; i < body.results.length; i++) {
         placesNames.push(body.results[i].name);
       }
-      console.log(placesNames);
       if (body.next_page_token) {
         getNextPage(body.next_page_token)
+      } else {
+        console.log(placesNames);
       }
-      console.log(placesNames.length);
+
     });
   }, 2000);
 };

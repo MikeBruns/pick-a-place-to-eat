@@ -24,6 +24,7 @@ var placesNearHere = (settings) => {
 };
 
 var getPlacesNearMeNames = body => {
+  console.log('...');
   // console.log(JSON.stringify(body, undefined, 2));
   for (var i = 0; body.results && i < body.results.length; i++) {
     placesNames.push(body.results[i].name);
@@ -37,15 +38,18 @@ var getNextPage = nextPageToken => {
       url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${config.googleApiKey}&pagetoken=${nextPageToken}`,
       json: true
     }, (error, response, body) => {
+      console.log('...');
       for (var i = 0; i < body.results.length; i++) {
         placesNames.push(body.results[i].name);
       }
       if (body.next_page_token) {
         getNextPage(body.next_page_token)
       } else {
-        console.log('Final places list:');
-        console.log(placesNames);
-        console.log(placesNames.length);
+        // console.log('Final places list:');
+        // console.log(placesNames);
+        // console.log(placesNames.length);
+        var theChosenOne = placesNames[Math.floor(Math.random() * placesNames.length)];
+        console.log(`Looks like we are eating at... ${theChosenOne}`);
       }
     });
   }, 2000); //have to use a timeout to allow the next page work, it only works after it has been processed

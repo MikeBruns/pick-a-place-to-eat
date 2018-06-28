@@ -16,7 +16,6 @@ var placesNearHere = (settings) => {
     url: `${googleMapsLocationUrl}${lat},${lng}&radius=${settings.radiusInMeters}&opennow&type=restaurant&key=${config.googleApiKey}`,
     json: true
   }, (error, response, body) => {
-    console.log(settings);
     // console.log(JSON.stringify(body, undefined, 2));
     getPlacesNearMeNames(body);
     if (body.next_page_token) {
@@ -29,14 +28,11 @@ var placesNearHere = (settings) => {
 };
 
 var getPlacesNearMeNames = body => {
-  console.log('...');
+  console.log('We are searching for your feast...');
   // console.log(JSON.stringify(body, undefined, 2));
   for (var i = 0; body.results && i < body.results.length; i++) {
     placesNames.push(body.results[i].name);
   }
-  console.log(count);
-  console.log(placesNames);
-  count++;
 };
 
 var getNextPage = nextPageToken => {

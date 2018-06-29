@@ -20,4 +20,8 @@ Node application that helps you find a place to eat when you can't make the deci
 ``` 
 5. Find a place to eat by running the application with `node app.js`
 
-Right now the application only runs for a static zip code. Arguments will be available soon to allow for dynamic locations.
+### Arguments
+| Argument | Alias | Required | Default Value |
+|:--------:|:-----:|:--------:|:-------------:|
+| address  | `-a`  |  `true`  |      N/A      |
+| radius   | `-r`  |  `false` | 50,000 meters |

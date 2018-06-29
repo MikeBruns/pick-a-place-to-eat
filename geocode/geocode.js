@@ -23,7 +23,6 @@ var geocodeAddress = (address, callback) => {
 
 module.exports.geocodeAddress = geocodeAddress;
 
-
 // var googleMapsClient = require('@google/maps').createClient({
 //   key: config.googleApiKey
 // });

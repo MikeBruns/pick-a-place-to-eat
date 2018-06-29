@@ -52,7 +52,7 @@ var getNextPage = nextPageToken => {
         determineTheChosenOne();
       }
     });
-  }, 2000); //have to use a timeout to allow the next page work, it only works after it has been processed
+  }, 1200); //have to use a timeout to allow the next page work, it only works after it has been processed
 };
 
 const determineTheChosenOne = () => {
